@@ -1,0 +1,884 @@
+$color_light_xl: #FFFFFF;
+$color_light_l: #F6F6F6;
+$color_light_s: #FAFAFA;
+$color_dark_s: #CDCDCD;
+$color_dark_m: #B2B2B2;
+$color_dark_l: #545454;
+$color_dark_xl: #4C4C4C;
+$color_dark_2xl: #444444;
+$color_dark_3xl: #292929;
+$color_primary: #F1CDB3;
+$color_primary_light: #FDDCC4;
+$start_screen_gradient_background: url('/assets/images/noise_transparent@2x.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+$footer_gradient_background: url('/assets/images/noise_transparent@2X.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+
+//@font-face https://developer.mozilla.org/ru/docs/Web/CSS/@font-face
+
+@mixin h2 {
+    font: {
+        family: Georgia;
+        size: 4.4rem;
+        weight: 400;
+    }
+
+    line-height: 130%;
+    color: $color_light_xl;
+}
+
+@mixin h3 {
+    font: {
+        family: Georgia;
+        size: 3.5rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 130%;
+    letter-spacing: 0.21rem;
+}
+
+@mixin h3_mobile {
+    font: {
+        family: Georgia;
+        size: 2.5rem;
+        style: normal;
+        weight: normal;
+    }
+
+    text-align: center;
+    line-height: 130%;
+    letter-spacing: 0.15rem;
+}
+
+@mixin h4 {
+    font: {
+        family: Georgia;
+        size: 2rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 115%;
+    letter-spacing: 0.13rem;
+}
+
+@mixin h5 {
+    font: {
+        family: Georgia;
+        size: 1.5rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 110%;
+    letter-spacing: 0.09rem;
+}
+
+@mixin h5_modal_window {
+    @include h5;
+    letter-spacing: 0.078rem;
+    font-size: 1.3rem;
+}
+
+@mixin paragraph_l {
+    font: {
+        family: Arial;
+        size: 1.5rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 160%;
+}
+
+@mixin paragraph_s {
+    font: {
+        family: Arial;
+        size: 1.2rem;
+        style: italic;
+        weight: normal;
+    }
+
+    line-height: 150%;
+}
+
+@mixin paragraph_mobile_menu {
+    font: {
+        family: Arial;
+        size: 3.2rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 160%;
+}
+
+@mixin logo_title {
+    font: {
+        family: Georgia;
+        size: 3.2rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 110%;
+    letter-spacing: 0.192rem;
+}
+
+@mixin logo_subtitle {
+    font: {
+        family: Arial;
+        size: 1.3rem;
+        style: normal;
+        weight: normal;
+    }
+
+    line-height: 110%;
+    letter-spacing: 0.13rem;
+}
+
+@mixin slider__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.2rem;
+    height: 5.2rem;
+    border: 2px solid $color_primary;
+    border-radius: 100%;
+    padding: 1.9rem;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+        transition-duration: 0.5s;
+        border-color: $color_primary_light;
+        background-color: $color_primary_light;
+    }
+
+    &_active {
+        border-color: $color_primary;
+        background-color: $color_primary;
+
+    }
+
+    &:disabled {
+        transition-duration: 0.5s;
+        border-color: $color_dark_s;
+        pointer-events: none;
+
+        path {
+            fill: $color_dark_s;
+        }
+    }
+
+    &_paginator {
+        @include h4;
+        padding-bottom: 0.3rem;
+        color: $color_dark_3xl;
+
+        &:disabled {
+            color: $color_dark_s;
+        }
+    }
+
+    path {
+        fill: $color_dark_3xl;
+    }
+}
+
+@mixin button {
+    height: 5.2rem;
+    width: 20.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia;
+    font-style: normal;
+    font-size: 1.7rem;
+    border-radius: 10rem;
+    line-height: 130%;
+    letter-spacing: 0.108rem;
+    cursor: pointer;
+}
+
+@mixin button_primary {
+    @include button;
+    background-color: $color_primary;
+    border: none;
+
+    &:hover {
+        background-color: $color_primary_light;
+        transition-duration: 0.5s;
+    }
+}
+
+@mixin button_secondary {
+    @include button;
+    border: 2px solid $color_primary;
+
+    &:hover {
+        background-color: $color_primary_light;
+        border-color: $color_primary_light;
+        transition-duration: 0.5s;
+    }
+}
+
+:root {
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.blackout {
+    display: none;
+}
+
+.blackout_info {
+    display: none;
+}
+
+.blackout_info_active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(41, 41, 41, 0.6);
+    cursor: pointer;
+    transition: opacity 0.8s;
+}
+
+.info {
+    display: none;
+}
+
+.info_active {
+    display: flex;
+    position: relative;
+    width: 90rem;
+    height: 50rem;
+    position: fixed;
+    margin: calc(50vh - 25rem) calc(50vw - 45rem);
+    z-index: 150;
+    border-radius: 9px;
+    background-color: $color_light_s;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+
+
+    .info__close_button {
+        @include slider__button;
+        position: absolute;
+        right: -4.2rem;
+        top: -5.2rem;
+    }
+
+    .info__close_button_hover {
+        transition-duration: 0.5s;
+        border-color: $color_primary_light;
+        background-color: $color_primary_light;
+    }
+
+    .info__img {
+        height: 50rem;
+        width: 50rem;
+        border-radius: 9px;
+    }
+
+    .info__more {
+        width: 35.1rem;
+        margin: 5rem 2rem auto 2.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .info__title {
+        @include h3;
+    }
+
+    .info__subtitle {
+        @include h4;
+    }
+
+    .info__text {
+        @include h5;
+        margin: 3rem 0;
+    }
+
+    .info__about {
+        @include h5;
+        list-style-type: none;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+
+    .info__about li:before {
+        color: $color_primary;
+        content: "\2022";
+        padding-right: 10px;
+    }
+
+}
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    margin: 0 auto;
+    width: 120rem;
+    justify-content: space-between;
+}
+
+.header {
+    width: 100%;
+    top: 0;
+    position: sticky;
+    height: 12rem;
+
+    padding-top: 3rem;
+    background-color: $color_light_xl;
+    z-index: 1;
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+
+        &__link {
+            text-decoration: none;
+            color: $color_dark_l;
+        }
+
+        &__title {
+            @include logo_title;
+            color: $color_dark_3xl;
+        }
+
+        &__subtitle {
+            margin-top: 1rem;
+            text-align: center;
+            @include logo_subtitle;
+        }
+    }
+
+    .menu {
+        .logo {
+            display: none;
+        }
+
+        display: flex;
+        width: 44.3rem;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .list {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        list-style-type: none;
+
+        &__item {
+            display: flex;
+            align-items: center;
+        }
+
+        &__link {
+            font-family: Arial;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 160%;
+            text-decoration: none;
+            color: $color_dark_l;
+
+            &_disabled {
+                pointer-events: none;
+                color: $color_dark_l;
+            }
+
+            &_active {
+                border-bottom: solid 0.3rem $color_primary;
+                color: $color_dark_3xl;
+            }
+
+            &:hover {
+                color: $color_dark_3xl;
+            }
+        }
+    }
+}
+
+.main {
+    min-width: 128rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.pets {
+    padding-top: 8rem;
+    padding-bottom: 10rem;
+    background-color: $color_light_l;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+
+        .pets__title {
+            @include h3;
+            color: $color_dark_l;
+            text-align: center;
+        }
+
+        .pets__content {
+            display: flex;
+            align-items: center;
+
+            .pets__cards {
+                display: flex;
+
+                opacity: 0;
+
+                .pets__card_item {
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 0.9rem;
+                    background-color: $color_light_s;
+
+                    &:hover {
+                        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+                        background-color: $color_light_xl;
+
+                        .pets__card_button {
+                            background-color: $color_primary_light;
+                            border-color: $color_primary_light;
+                            transition-duration: 0.5s;
+                        }
+                    }
+
+                    .pets__card_image {
+                        width: 27rem;
+                        height: 27rem;
+                    }
+
+                    .pets__card_content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding-bottom: 3rem;
+                    }
+
+                    .pets__card_title {
+                        @include h4;
+                        margin: 3rem 0;
+                        text-align: center;
+
+                    }
+
+                    .pets__card_button {
+                        @include button_secondary;
+                        background: none;
+                        width: 18.7rem;
+                    }
+                }
+            }
+
+            .pets__cards_hide {
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+
+            .pets__cards_show {
+                opacity: 1;
+                transition: opacity 0.4s;
+            }
+
+            .slider__button {
+                @include slider__button;
+            }
+
+            .slider__button_reverted {
+                @include slider__button;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__button {
+        @include button_primary;
+        width: 26.1rem;
+        text-decoration: none;
+        color: $color_dark_3xl;
+    }
+
+    &__navigation {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .pets__navigation_button {
+        @include slider__button;
+    }
+
+    .pets__paginator {
+        @include slider__button;
+        cursor: auto;
+    }
+}
+
+
+.footer {
+    min-width: 128rem;
+    padding-top: 4rem;
+    background: $footer_gradient_background;
+
+    .wrapper {
+        justify-content: center;
+        column-gap: 15.4rem;
+    }
+
+    .footer__title {
+        @include h3;
+        color: $color_light_xl;
+    }
+
+    .footer__subtitle {
+        @include h4;
+        color: $color_primary;
+        text-decoration: none;
+        letter-spacing: 0.12rem;
+    }
+
+    .footer__contact_image {
+        height: 4rem;
+    }
+
+    .footer__location_image {
+        height: 3.2rem;
+    }
+
+    .footer__link {
+        display: flex;
+        text-decoration: none;
+        gap: 2rem;
+        align-items: center;
+    }
+
+
+
+    .footer__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 3.5rem;
+        padding-top: 1.6rem;
+
+    }
+
+    .footer__locations {
+        display: flex;
+        flex-direction: column;
+        gap: 3.4rem;
+        padding-top: 1.6rem;
+        padding-left: 0.1rem;
+
+        .footer__title {
+            padding-left: 0.6rem;
+        }
+
+        .footer__link {
+            gap: 1.6rem;
+        }
+    }
+
+    .footer__image {
+        margin-left: 1.2rem;
+        width: 30rem;
+        height: 31rem;
+    }
+
+}
+
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+    .info {
+        width: 63rem;
+        height: 35rem;
+        margin: calc(50vh - 17.5rem) calc(50vw - 31.5rem);
+
+        .info__img {
+            height: 35rem;
+            width: 35rem;
+        }
+
+        .info__more {
+            width: 26rem;
+            margin: 1rem 0.9rem auto 1.1rem;
+        }
+
+        .info__text {
+            @include h5_modal_window;
+            margin: 1rem 0;
+        }
+
+        .info__about {
+            gap: 0.5rem;
+        }
+    }
+
+    .wrapper {
+        width: 70.8rem;
+    }
+
+    .main,
+    .header,
+    .hero,
+    .about,
+    .pets,
+    .help,
+    .donation,
+    .footer {
+        min-width: 76.8rem;
+    }
+
+    .pets {
+        padding-top: 8rem;
+    }
+
+    .footer {
+        padding-top: 3rem;
+    }
+
+    .footer .wrapper {
+        flex-wrap: wrap;
+        column-gap: 6rem;
+        row-gap: 6.5rem;
+    }
+
+    .footer .footer__contacts {
+        padding-top: 0;
+    }
+
+    .footer .footer__locations {
+        padding-top: 0;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .info {
+        width: 24rem;
+        height: 40rem;
+        margin: calc(50vh - 20rem) calc(50vw - 12rem);
+
+        .info__close_button {
+            right: -3.2rem;
+        }
+
+        .info__img {
+            display: none;
+        }
+
+        .info__more {
+            width: 22rem;
+            margin: 1rem 1rem auto 1rem;
+        }
+
+        .info__title,
+        .info__subtitle {
+            text-align: center;
+        }
+
+
+        .info__text {
+            @include h5_modal_window;
+            margin: 1rem 0;
+            text-align: justify;
+        }
+
+        .info__about {
+            gap: 0.5rem;
+        }
+    }
+
+    .blackout {
+        display: block;
+        opacity: 0;
+        transition: opacity 0.4s;
+        pointer-events: none;
+    }
+
+    .blackout_active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        background-color: rgb(41, 41, 41);
+        opacity: 0.6;
+        cursor: pointer;
+        transition: opacity 0.8s;
+        pointer-events: auto;
+    }
+
+    .wrapper {
+        width: 30rem;
+    }
+
+    .main,
+    .header,
+    .hero,
+    .about,
+    .pets,
+    .help,
+    .donation,
+    .footer {
+        min-width: 32rem;
+    }
+
+    .header {
+
+        .logo_active {
+            opacity: 0;
+            transition: opacity 0.8s;
+            pointer-events: none;
+        }
+
+        .burger {
+            display: block;
+            position: absolute;
+            right: 5.3rem;
+            z-index: 30;
+            cursor: pointer;
+
+            transform: rotate(0deg);
+            transition: transform 0.4s;
+            stroke: $color_primary;
+
+            &:hover {
+                filter: brightness(0.7);
+            }
+        }
+
+        .burger_active {
+            transform: rotate(-90deg);
+            transition: transform 0.8s, stroke 0.8s;
+            stroke: $color_light_xl;
+        }
+
+        .burger_inactive {
+            transform: rotate(0deg);
+            transition: transform 0.8s, stroke 0.8s;
+            stroke: black;
+        }
+
+        .menu {
+            display: flex;
+            position: fixed;
+
+            top: 0;
+            width: 32rem;
+            height: 100vh;
+            z-index: 20;
+
+            background-color: $color_dark_3xl;
+            overflow-y: auto;
+
+            .logo {
+                display: flex;
+                position: absolute;
+                left: 1rem;
+                top: 3rem;
+                z-index: 30;
+            }
+
+            .list {
+                margin: auto;
+                flex-direction: column;
+                gap: 4rem;
+                align-items: center;
+                gap: 4rem;
+
+                &__link {
+                    @include paragraph_mobile_menu;
+                    color: $color_dark_s;
+
+                    &_disabled {
+                        color: $color_dark_s;
+                    }
+
+                    &_active {
+                        color: $color_light_s;
+                    }
+
+                    &:hover {
+                        color: $color_light_s;
+                    }
+                }
+            }
+        }
+
+        .burger_menu_inactive {
+            right: -100%;
+            transition: 1.6s;
+            visibility: hidden;
+        }
+
+        .burger_menu_active {
+            right: 0;
+            transition: 0.8s;
+            visibility: visible;
+        }
+    }
+
+
+    .pets {
+        padding-top: 4.2rem;
+        padding-bottom: 4.2rem;
+    }
+
+    .pets__wrapper .pets__title {
+        @include h3_mobile;
+        height: 6.4rem;
+    }
+
+    .footer .wrapper {
+        flex-direction: column;
+        row-gap: 4rem;
+    }
+
+    .footer .footer__contacts {
+        padding-top: 0;
+        align-items: center;
+    }
+
+    .footer .footer__locations {
+        padding-top: 0;
+        align-items: center;
+    }
+
+    .footer .footer__title {
+        @include h3_mobile;
+    }
+
+    .footer .footer__image {
+        width: 260px;
+        height: 269px;
+    }
+}
