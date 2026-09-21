@@ -876,6 +876,10 @@ $footer_gradient_background: url('/assets/images/noise_transparent@2X.png'), rad
             pointer-events: none;
         }
 
+        #theme-switcher {
+            position: absolute;
+        }
+
         .burger {
             display: block;
             position: absolute;
@@ -996,5 +1000,27 @@ $footer_gradient_background: url('/assets/images/noise_transparent@2X.png'), rad
     .footer .footer__image {
         width: 260px;
         height: 269px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 480px) {
+
+    #theme-switcher {
+        right: 12.3rem;
+    }
+
+    .burger {
+        right: 5.3rem;
+    }
+}
+
+@media screen and (max-width: 479px) {
+
+    #theme-switcher {
+        right: 8.3rem;
+    }
+
+    .burger {
+        right: 2.3rem;
     }
 }
