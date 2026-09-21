@@ -12,6 +12,89 @@ $color_primary_light: #FDDCC4;
 $start_screen_gradient_background: url('/assets/images/noise_transparent@2x.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 $footer_gradient_background: url('/assets/images/noise_transparent@2X.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 
+:root {
+    color-scheme: light;
+
+    /* set defaults */
+    --background: #FFFFFF;
+    --foreground: #292929;
+
+    --background_accent: #F6F6F6;
+    --foreground_accent: #545454;
+
+    --foreground_muted: #545454;
+
+    --primary: #F1CDB3;
+    --foreground-primary: #292929;
+
+    --primary_light: #FDDCC4;
+
+    --header-button: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+
+        $color_dark_xl: #bbbbbb;
+
+        --background: #010101;
+        --foreground: #cdcdcd;
+
+        --background_accent: #1a1a1a;
+        --foreground_accent: #b8b8b8; //f8f8f8;
+
+        --foreground_muted: #f8f8f8;
+
+        --primary: #a9876f;
+        --foreground-primary: #0b0401;
+
+        --primary_light: #b4957f;
+
+        --header-button: var(--primary);
+    }
+}
+
+[color-scheme="light"] {
+    color-scheme: light;
+
+    --background: #FFFFFF;
+    --foreground: #292929;
+
+    --background_accent: #F6F6F6;
+    --foreground_accent: #545454;
+
+    --foreground_muted: #545454;
+
+    --primary: #F1CDB3;
+    --foreground-primary: #292929;
+
+    --primary_light: #FDDCC4;
+
+    --header-button: var(--foreground);
+}
+
+[color-scheme="dark"] {
+    color-scheme: dark;
+
+    $color_dark_xl: #bbbbbb;
+
+    --background: #010101;
+    --foreground: #cdcdcd;
+
+    --background_accent: #1a1a1a;
+    --foreground_accent: #b8b8b8; //f8f8f8;
+
+    --foreground_muted: #f8f8f8;
+
+    --primary: #a9876f;
+    --foreground-primary: #0b0401;
+
+    --primary_light: #b4957f;
+
+    --header-button: var(--primary);
+}
+
 //@font-face https://developer.mozilla.org/ru/docs/Web/CSS/@font-face
 
 @mixin h2 {
@@ -384,6 +467,39 @@ $footer_gradient_background: url('/assets/images/noise_transparent@2X.png'), rad
 
     .burger {
         display: none;
+    }
+
+    #theme-switcher {
+        display: block;
+        z-index: 30;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(0.7);
+        }
+
+        svg {
+            display: none;
+            fill: var(--header-button);
+        }
+    }
+
+    #theme-switcher[data-theme="auto"] {
+        svg.auto {
+            display: block;
+        }
+    }
+
+    #theme-switcher[data-theme="light"] {
+        svg.light {
+            display: block;
+        }
+    }
+
+    #theme-switcher[data-theme="dark"] {
+        svg.dark {
+            display: block;
+        }
     }
 
     .list {
