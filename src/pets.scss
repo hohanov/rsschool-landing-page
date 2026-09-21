@@ -1,0 +1,56 @@
+@use '_shared.scss' as *;
+
+.pets {
+    &__wrapper {
+        .pets__title {
+            margin-bottom: 3rem;
+        }
+
+        .pets__content {
+            flex-direction: column;
+
+            .pets__cards {
+                flex-wrap: wrap;
+                justify-content: center;
+                column-gap: 4rem;
+                row-gap: 3rem;
+                padding: 6rem 0;
+
+                .pets__card_item {
+                    margin: 0 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+
+    .pets {
+        padding-bottom: 7.6rem;
+    }
+
+    .pets__wrapper .pets__content .pets__cards {
+        padding: 3rem 0 4rem 0;
+    }
+
+    .pets__wrapper .pets__content .pets__cards .pets__card_item:nth-child(1n+7) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+
+    .pets__wrapper .pets__content .pets__cards {
+        padding: 4.2rem 0 4.2rem 0;
+    }
+
+    .pets__wrapper .pets__content .pets__cards .pets__card_item:nth-child(1n+4) {
+        display: none;
+    }
+
+    .pets__navigation {
+        gap: 1rem;
+    }
+}
