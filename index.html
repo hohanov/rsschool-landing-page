@@ -17,7 +17,7 @@
   <div class="blackout_info"></div>
   <div class="info">
     <button class="info__close_button">
-      <img src="assets/icons/close.svg">
+      <img src="assets/icons/close.svg" alt="close">
     </button>
     <img class="info__img" src="assets/images/pets/pets-scarlet.png" alt="Scarlett">
     <div class="info__more">
@@ -39,9 +39,9 @@
     <div class="wrapper">
       <div class="logo">
         <a class="logo__link" href="index.html">
-          <h1 class="logo__title">
+          <h2 class="logo__title">
             Cozy House
-          </h1>
+          </h2>
           <div class="logo__subtitle">
             Shelter for pets in Boston
           </div>
@@ -75,12 +75,12 @@
             </a>
           </li>
           <li class="list__item">
-            <a class="list__link list__link_disabled">
+            <a class="list__link" href="#help">
               Help the shelter
             </a>
           </li>
           <li class="list__item">
-            <a class="list__link list__link_disabled">
+            <a class="list__link" href="#contacts">
               Contacts
             </a>
           </li>
@@ -170,7 +170,7 @@
           </h3>
           <div class="pets__content">
             <button class="slider__button">
-              <img src="assets/images/Arrow.svg" alt="Left arrow">
+              &lt;
             </button>
 
             <div class="pets__cards pets__cards_show">
@@ -209,8 +209,8 @@
               </div>
             </div>
 
-            <button class="slider__button slider__button_reverted">
-              <img src="assets/images/Arrow.svg" alt="Right arrow">
+            <button class="slider__button">
+              &gt;
             </button>
           </div>
           <a href="pets.html" class="pets__button">
@@ -283,7 +283,7 @@
         <div class="help__list"></div>
       </div>
     </section>
-    <section class="donation">
+    <section class="donation" id="help">
       <div class="wrapper">
         <div class="donation__wrapper">
           <img src="assets/images/donation-dog.png" alt="Donation dog" class="donation__image">
@@ -291,9 +291,9 @@
             <h3 class="donation__content_title">
               You can also<br>make a donation
             </h3>
-            <h5 class="donation__content_subtitle">
+            <h4 class="donation__content_subtitle">
               Name of the bank / Type of bank account
-            </h5>
+            </h4>
 
             <a href="#" class="donation__content_button">
               <img src="assets/images/credit-card.svg" alt="Credit card" class="donation__content_button_card">
@@ -313,7 +313,7 @@
   <footer class="footer">
     <div class="wrapper">
 
-      <div class="footer__contacts">
+      <div class="footer__contacts" id="contacts">
         <h3 class="footer__title">
           For questions<br>and suggestions
         </h3>
@@ -323,7 +323,7 @@
             email@shelter.com
           </h4>
         </a>
-        <a href="tel:+13 674 567 75 54" class="footer__link">
+        <a href="tel:+136745677554" class="footer__link">
           <img src="assets/images/icons/icon-phone.svg" alt="Phone" class="footer__contact_image">
           <h4 class="footer__subtitle">
             +13 674 567 75 54

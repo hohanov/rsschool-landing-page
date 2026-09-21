@@ -30,7 +30,7 @@
         @include button_primary;
         margin-top: 4rem;
         text-decoration: none;
-        color: $color_dark_3xl;
+        color: var(--foreground-primary);
     }
 
     .hero__image_wrapper {
@@ -77,7 +77,7 @@
             display: block;
         }
         @include h3;
-        color: $color_dark_l;
+        color: var(--foreground_muted);
     }
 
     &__description {
@@ -128,7 +128,7 @@
     &__title {
         @include h3;
         text-align: center;
-        color: $color_dark_l;
+        color: var(--foreground_muted);
     }
 
     &__content {
@@ -152,13 +152,13 @@
     &__content_item_title {
         @include h4;
         letter-spacing: 0.11rem;
-        color: $color_dark_l;
+        color: var(--foreground_muted);
     }
 }
 
 .donation {
 
-    background-color: $color_light_l;
+    background-color: var(--background_accent);
 
     .donation__wrapper {
         display: flex;
@@ -184,12 +184,12 @@
     .donation__content_title {
         @include h3;
         margin-top: 0.2rem;
-        color: $color_dark_l;
+        color: var(--foreground_muted);
     }
 
     .donation__content_subtitle {
         @include h5;
-        color: $color_dark_l;
+        color: var(--foreground_muted);
     }
 
     .donation__content_button {
@@ -202,13 +202,13 @@
         gap: 1.5rem;
         border-radius: 0.9rem;
         text-decoration: none;
-        color: $color_dark_l;
+        color: var(--foreground-primary);
 
     }
 
     .donation__content_button_number {
         @include h4;
-        color: $color_dark_l;
+        color: var(--foreground-primary);
         letter-spacing: 0.12rem;
     }
 

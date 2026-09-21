@@ -17,7 +17,7 @@
   <div class="blackout_info"></div>
   <div class="info">
     <button class="info__close_button">
-      <img src="assets/icons/close.svg">
+      <img src="assets/icons/close.svg" alt="close">
     </button>
     <img class="info__img" src="assets/images/pets/pets-scarlet.png" alt="Scarlett">
     <div class="info__more">
@@ -39,9 +39,9 @@
     <div class="wrapper">
       <div class="logo">
         <a class="logo__link" href="index.html">
-          <h1 class="logo__title">
+          <h2 class="logo__title">
             Cozy House
-          </h1>
+          </h2>
           <div class="logo__subtitle">
             Shelter for pets in Boston
           </div>
@@ -75,12 +75,12 @@
             </a>
           </li>
           <li class="list__item">
-            <a class="list__link list__link_disabled">
+            <a class="list__link" href="index.html#help">
               Help the shelter
             </a>
           </li>
           <li class="list__item">
-            <a class="list__link list__link_disabled">
+            <a class="list__link" href="#contacts">
               Contacts
             </a>
           </li>
@@ -106,17 +106,23 @@
     <section class="pets">
       <div class="wrapper">
         <div class="pets__wrapper">
-          <h3 class="pets__title">
+          <h2 class="pets__title">
             Our friends who<br>are looking for a house
-          </h3>
+          </h2>
+
           <div class="pets__content">
+            <div class="pets__navigation">
+              <button class="pets__button">Cats</button>
+              <button class="pets__button">Dogs</button>
+              <button class="pets__button">Cats</button>
+            </div>
             <div class="pets__cards pets__cards_show">
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-katrine.png" alt="Katrine" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Katrine
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -125,9 +131,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-jennifer.png" alt="Jennifer" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Jennifer
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -136,9 +142,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-woody.png" alt="Woody" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Woody
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -147,9 +153,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-sophie.png" alt="Sophia" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Sophia
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -158,9 +164,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-timmy.png" alt="Timmy" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Timmy
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -169,9 +175,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-charly.png" alt="Charly" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Charly
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -180,9 +186,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-scarlet.png" alt="Scarlett" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Scarlett
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -191,9 +197,9 @@
               <div class="pets__card_item">
                 <img src="assets/images/pets/pets-freddie.png" alt="Freddie" class="pets__card_image">
                 <div class="pets__card_content">
-                  <h4 class="pets__card_title">
+                  <h3 class="pets__card_title">
                     Freddie
-                  </h4>
+                  </h3>
                   <button class="pets__card_button">
                     Learn more
                   </button>
@@ -202,20 +208,20 @@
             </div>
           </div>
           <div class="pets__navigation">
-            <button class="pets__navigation_button" disabled id="first">
-              <h4 class="pets__navigation_button_paginator">&lt;&lt;</h4>
+            <button class="slider__button" disabled id="first">
+              &lt;&lt;
             </button>
-            <button class="pets__navigation_button" disabled id="previous">
-              <h4 class="pets__navigation_button_paginator">&lt;</h4>
+            <button class="slider__button" disabled id="previous">
+              &lt;
             </button>
-            <button class="pets__paginator pets__paginator_active">
-              <h4 class="pets__navigation_button_paginator" id="current_page">1</h4>
+            <button class="slider__button slider__button_active">
+              <span id="current_page">1</span>
             </button>
-            <button class="pets__navigation_button" id="next">
-              <h4 class="pets__navigation_button_paginator">&gt;</h4>
+            <button class="slider__button" id="next">
+              &gt;
             </button>
-            <button class="pets__navigation_button" id="last">
-              <h4 class="pets__navigation_button_paginator">&gt;&gt;</h4>
+            <button class="slider__button" id="last">
+              &gt;&gt;
             </button>
           </div>
         </div>
@@ -225,7 +231,7 @@
   <footer class="footer">
     <div class="wrapper">
 
-      <div class="footer__contacts">
+      <div class="footer__contacts" id="contacts">
         <h3 class="footer__title">
           For questions<br>and suggestions
         </h3>
@@ -235,7 +241,7 @@
             email@shelter.com
           </h4>
         </a>
-        <a href="tel:+13 674 567 75 54" class="footer__link">
+        <a href="tel:+136745677554" class="footer__link">
           <img src="assets/images/icons/icon-phone.svg" alt="Phone" class="footer__contact_image">
           <h4 class="footer__subtitle">
             +13 674 567 75 54
