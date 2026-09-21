@@ -88,7 +88,7 @@
                 margin-top: 2.5rem;
             }
             @include paragraph_l;
-            color: $color_dark_xl;
+            color: var(--foreground_accent);
         }
     }
 }

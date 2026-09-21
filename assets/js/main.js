@@ -60,8 +60,8 @@ function generateCards(){
             cardsContainer.append(card);
         }
           cardsButtons = document.querySelectorAll('.pets__card_item');
-        Array.from(cardsButtons).forEach(function(element) {element.addEventListener('click', showInfo);});
-        Array.from(pagesButtons).forEach(function(element) {element.addEventListener('click', changePage);});
+        // Array.from(cardsButtons).forEach(function(element) {element.addEventListener('click', showInfo);});
+        // Array.from(pagesButtons).forEach(function(element) {element.addEventListener('click', changePage);});
         cardsContainer.classList.remove('pets__cards_hide');
         cardsContainer.classList.add('pets__cards_show');
     }, 800)
@@ -106,11 +106,11 @@ function showInfo(event) {
         closeButton.addEventListener('click', hideInfo);
         blackoutInfo.classList.add('blackout_info_active');
         infoContainer.classList.add('info_active');
-        document.body.style.overflow = 'hidden';
+        document.documentElement.classList.add('overflow-y-hidden');
 }
 
 function hideInfo() {
-        document.body.style.overflow = 'visible';
+        document.documentElement.classList.remove('overflow-y-hidden');
         blackoutInfo.classList.remove('blackout_info_active');
         infoContainer.classList.remove('info_active');
 }

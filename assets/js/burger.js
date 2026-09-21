@@ -1,15 +1,15 @@
 
-    const burger = document.querySelector('.burger');
-    const menu = document.querySelector('.menu');
-    const menuCloseItem = document.querySelector('.header__nav-close');
-    const menuLinks = document.querySelectorAll('.list__link');
-    const blackout = document.querySelector('.blackout');
-    const logo = document.querySelector('.logo');
-    const selfLink = document.querySelector('.list__link_active');
+const burger = document.querySelector('.burger');
+const menu = document.querySelector('.menu');
+const menuCloseItem = document.querySelector('.header__nav-close');
+const menuLinks = document.querySelectorAll('.list__link');
+const blackout = document.querySelector('.blackout');
+const logo = document.querySelector('.logo');
+const selfLink = document.querySelector('.list__link_active');
 
 function toggle() {
     if (menu.classList.contains('burger_menu_active')) {
-        document.body.style.overflow = 'visible';
+        document.documentElement.classList.remove('overflow-y-hidden');
         burger.classList.add('burger_inactive');
         menu.classList.add('burger_menu_inactive');
         menu.classList.remove('burger_menu_active');
@@ -23,11 +23,11 @@ function toggle() {
         burger.classList.add('burger_active');
         menu.classList.remove('burger_menu_inactive');
         burger.classList.remove('burger_inactive');
-        document.body.style.overflow = 'hidden';
-    } 
+        document.documentElement.classList.add('overflow-y-hidden');
+    }
 }
 
-    burger.addEventListener('click', toggle);
-    blackout.addEventListener('click', toggle);
-    selfLink.addEventListener('click', toggle);
+burger.addEventListener('click', toggle);
+blackout.addEventListener('click', toggle);
+selfLink.addEventListener('click', toggle);
 

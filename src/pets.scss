@@ -3,10 +3,12 @@
 .pets {
     &__wrapper {
         .pets__title {
-            height: 9rem;
+            margin-bottom: 3rem;
         }
 
         .pets__content {
+            flex-direction: column;
+
             .pets__cards {
                 flex-wrap: wrap;
                 justify-content: center;
