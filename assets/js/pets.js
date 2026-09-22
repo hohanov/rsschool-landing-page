@@ -9,9 +9,9 @@ const currentPageSpan = document.getElementById('current_page');
 const nextButton = document.getElementById('next');
 const lastButton = document.getElementById('last');
 
-const mediaQuery1280 = window.matchMedia('(min-width: 1280px)');
-const mediaQuery768 = window.matchMedia('(max-width: 1279px) and (min-width: 768px)');
-const mediaQuery320 = window.matchMedia('(max-width: 767px)');
+const mediaQuery1280 = window.matchMedia('(min-width: 1281px)');
+const mediaQuery768 = window.matchMedia('(max-width: 1280px) and (min-width: 769px)');
+const mediaQuery320 = window.matchMedia('(max-width: 768px)');
 
 let pagesButtons = document.querySelectorAll('.pets__navigation_button');
 let cardsButtons = document.querySelectorAll('.pets__card_item');

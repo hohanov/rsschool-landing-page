@@ -3,9 +3,9 @@ const infoContainer = document.querySelector('.info');
 const cardsContainer = document.querySelector('.pets__cards');
 const body = document.querySelector("body");
 
-const mediaQuery1280 = window.matchMedia('(min-width: 1280px)');
-const mediaQuery768 = window.matchMedia('(max-width: 1279px) and (min-width: 768px)');
-const mediaQuery320 = window.matchMedia('(max-width: 767px)');
+const mediaQuery1280 = window.matchMedia('(min-width: 1281px)');
+const mediaQuery768 = window.matchMedia('(max-width: 1280px) and (min-width: 769px)');
+const mediaQuery320 = window.matchMedia('(max-width: 768px)');
 
 let pagesButtons = document.querySelectorAll('.slider__button');
 let cardsButtons = document.querySelectorAll('.pets__card_item');
