@@ -528,7 +528,7 @@ html.overflow-y-hidden {
 }
 
 .main {
-    min-width: 128rem;
+    min-width: 126rem;
     display: flex;
     flex-direction: column;
 }
@@ -641,7 +641,7 @@ html.overflow-y-hidden {
 
 
 .footer {
-    min-width: 128rem;
+    min-width: 126rem;
     padding-top: 4rem;
     background: $footer_gradient_background;
 
@@ -749,7 +749,7 @@ html.overflow-y-hidden {
     .help,
     .donation,
     .footer {
-        min-width: 76.8rem;
+        min-width: 74.8rem;
     }
 
     .pets {

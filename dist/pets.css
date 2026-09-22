@@ -359,7 +359,7 @@ html.overflow-y-hidden {
 }
 
 .main {
-  min-width: 128rem;
+  min-width: 126rem;
   display: flex;
   flex-direction: column;
 }
@@ -493,7 +493,7 @@ html.overflow-y-hidden {
 }
 
 .footer {
-  min-width: 128rem;
+  min-width: 126rem;
   padding-top: 4rem;
   background: url("./noise_transparent2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
@@ -597,7 +597,7 @@ html.overflow-y-hidden {
   .help,
   .donation,
   .footer {
-    min-width: 76.8rem;
+    min-width: 74.8rem;
   }
   .pets {
     padding-top: 8rem;
