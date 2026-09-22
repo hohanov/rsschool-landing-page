@@ -558,7 +558,7 @@ html.overflow-y-hidden {
   height: 31rem;
 }
 
-@media screen and (max-width: 1279px) and (min-width: 768px) {
+@media screen and (max-width: 1280px) and (min-width: 769px) {
   .info {
     width: 63rem;
     height: 35rem;
@@ -617,7 +617,7 @@ html.overflow-y-hidden {
     padding-top: 0;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .info {
     width: 24rem;
     height: 40rem;
@@ -808,7 +808,7 @@ html.overflow-y-hidden {
     height: 269px;
   }
 }
-@media screen and (max-width: 767px) and (min-width: 480px) {
+@media screen and (max-width: 768px) and (min-width: 481px) {
   #theme-switcher {
     right: 12.3rem;
   }
@@ -816,7 +816,7 @@ html.overflow-y-hidden {
     right: 5.3rem;
   }
 }
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 480px) {
   #theme-switcher {
     right: 8.3rem;
   }
@@ -1089,7 +1089,7 @@ html.overflow-y-hidden {
   font-style: italic;
 }
 
-@media screen and (max-width: 1279px) and (min-width: 768px) {
+@media screen and (max-width: 1280px) and (min-width: 769px) {
   .hero {
     padding-top: 3rem;
   }
@@ -1145,7 +1145,7 @@ html.overflow-y-hidden {
     flex-direction: column-reverse;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero {
     padding-top: 3rem;
   }
