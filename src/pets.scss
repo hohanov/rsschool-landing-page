@@ -9,6 +9,23 @@
         .pets__content {
             flex-direction: column;
 
+            .pets__navigation .pets__button {
+                background-color: var(--primary_light);
+                border: 2px solid var(--primary_light);
+
+                &:hover {
+                    background-color: var(--primary);
+                    border-color: var(--primary);
+                }
+
+                &_active,
+                &_active:hover {
+                    background-color: color-mix(in srgb, var(--primary) 70%, black);
+                    border-color: color-mix(in srgb, var(--primary) 70%, black);
+                    cursor: default;
+                }
+            }
+
             .pets__cards {
                 flex-wrap: wrap;
                 justify-content: center;

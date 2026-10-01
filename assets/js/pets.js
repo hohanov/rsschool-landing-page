@@ -1,75 +1,57 @@
-const blackoutInfo = document.querySelector('.blackout_info');
-const infoContainer = document.querySelector('.info');
+import { mediaQuery1280, mediaQuery768, mediaQuery320, getPets, createCards } from './cards.js';
+import { showInfo } from './modal.js';
+
 const cardsContainer = document.querySelector('.pets__cards');
-const body = document.querySelector("body");
+const categoryButtons = document.querySelectorAll('.pets__button[data-category]');
 
-const firstButton = document.getElementById('first');
+const paginationContainer = document.getElementById('pagination');
 const previousButton = document.getElementById('previous');
-const currentPageSpan = document.getElementById('current_page');
 const nextButton = document.getElementById('next');
-const lastButton = document.getElementById('last');
 
-const mediaQuery1280 = window.matchMedia('(min-width: 1281px)');
-const mediaQuery768 = window.matchMedia('(max-width: 1280px) and (min-width: 769px)');
-const mediaQuery320 = window.matchMedia('(max-width: 768px)');
+const renderCards = createCards(cardsContainer, showInfo);
 
-let pagesButtons = document.querySelectorAll('.pets__navigation_button');
-let cardsButtons = document.querySelectorAll('.pets__card_item');
-let closeButton = document.querySelector('.info__close_button');
-
+let allPets = [];
 let fullPetsList = [];
+let activeCategory;
 let petsOnPage, pageNumber, pageQuantity;
 
-async function getObjectPets(src, length) {
-    const res = await fetch(src);
-    const rawData = await res.json();
-    let flow = [];
-    let n;
-        for (let i = 0; i < length; i++) {
-            do {
-                n = (Math.floor(Math.random() * 8));
-            } while (flow.includes(n, Math.floor(i / 8) * 8) ||
-            flow.includes(n, Math.floor(i / 6) * 6) ||
-            flow.includes(n, Math.floor(i / 3) * 3) );
-            flow.push(n);
-            fullPetsList.push(rawData[n]);
-        }
+function filterPets() {
+    fullPetsList = allPets.filter((pet) => pet.category === activeCategory);
+    for (let i = fullPetsList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fullPetsList[i], fullPetsList[j]] = [fullPetsList[j], fullPetsList[i]];
+    }
 }
 
-function generateCards(){
-    Array.from(cardsButtons).forEach(function(element) {element.removeEventListener('click', showInfo);});
-    Array.from(pagesButtons).forEach(function(element) {element.removeEventListener('click', changePage);});
-    cardsContainer.classList.remove('pets__cards_show');
-    cardsContainer.classList.add('pets__cards_hide');
-    setTimeout(() => {
-        cardsContainer.innerHTML = '';
-        for (let i = 0; i < petsOnPage; i++) {
-            let { img, name, type } = fullPetsList[(petsOnPage * (pageNumber - 1)) + i];
-            let card = document.createElement('div');
-            card.className = 'pets__card_item';
-            card.id = i;
-            card.innerHTML =
-            `
-            <img src="${img}" alt="${type} ${name}" class="pets__card_image">
-            <div class="pets__card_content">
-                <h4 class="pets__card_title">
-                ${name}
-                </h4>
-                <button class="pets__card_button">
-                    Learn more
-                </button>
-            </div>
-            `;
-            cardsContainer.append(card);
-        }
+function setCategory(category) {
+    activeCategory = category;
+    categoryButtons.forEach((button) => {
+        button.classList.toggle('pets__button_active', button.dataset.category === category);
+    });
+    filterPets();
+    screenCheck();
+}
 
-        cardsButtons = document.querySelectorAll('.pets__card_item');
-        // Array.from(cardsButtons).forEach(function(element) {element.addEventListener('click', showInfo);});
-        // Array.from(pagesButtons).forEach(function(element) {element.addEventListener('click', changePage);});
-        cardsContainer.classList.remove('pets__cards_hide');
-        cardsContainer.classList.add('pets__cards_show');
-    }, 800)
+function changeCategory(event) {
+    const category = event.currentTarget.dataset.category;
+    if (category !== activeCategory) {
+        setCategory(category);
+    }
+}
 
+function generateCards() {
+    const start = petsOnPage * (pageNumber - 1);
+    return renderCards(fullPetsList.slice(start, start + petsOnPage));
+}
+
+function scrollToFirstCard() {
+    const firstCard = cardsContainer.firstElementChild;
+    if (!firstCard) return;
+    const headerBottom = document.querySelector('.header').getBoundingClientRect().bottom;
+    const { top } = firstCard.getBoundingClientRect();
+    if (top < headerBottom || top > window.innerHeight) {
+        window.scrollBy({ top: top - headerBottom, behavior: 'smooth' });
+    }
 }
 
 function screenCheck(){
@@ -81,95 +63,49 @@ function screenCheck(){
         petsOnPage = 3;
     }
     pageNumber = 1;
-    pageQuantity = 48 / petsOnPage;
+    pageQuantity = Math.max(1, Math.ceil(fullPetsList.length / petsOnPage));
     changePaginationStatus();
     generateCards();
-}
-
-function showInfo(event) {
-        let id = event.target.closest('.pets__card_item').id;
-        infoContainer.innerHTML = '';
-        let { age, breed, description, diseases, img, inoculations, name, parasites, type } = fullPetsList[id];
-        infoContainer.innerHTML =
-        `
-        <button class="info__close_button">
-        <img src="../../assets/icons/close.svg">
-        </button>
-        <img class="info__img" src="${img}" alt="${type} ${name}">
-        <div class="info__more">
-        <div class="info__title">${name}</div>
-        <div class="info__subtitle">${type} - ${breed}</div>
-        <div class="info__text">${description}</div>
-        <ul class="info__about">
-            <li><b>Age:</b> ${age}</li>
-            <li><b>Inoculations:</b> ${inoculations}</li>
-            <li><b>Diseases:</b> ${diseases}</li>
-            <li><b>Parasites:</b> ${parasites}</li>
-        </ul>
-        </div>
-        `;
-        closeButton = document.querySelector('.info__close_button');
-        closeButton.addEventListener('click', hideInfo);
-        blackoutInfo.classList.add('blackout_info_active');
-        infoContainer.classList.add('info_active');
-        document.documentElement.classList.add('overflow-y-hidden');
-}
-
-function hideInfo() {
-        document.documentElement.classList.remove('overflow-y-hidden');
-        blackoutInfo.classList.remove('blackout_info_active');
-        infoContainer.classList.remove('info_active');
 }
 
 function changePaginationStatus() {
-    currentPageSpan.textContent = pageNumber;
-    if (pageNumber === 1) {
-        firstButton.disabled = true;
-        previousButton.disabled = true;
-        nextButton.disabled = false;
-        lastButton.disabled = false;
-    } else if (pageNumber === pageQuantity) {
-        firstButton.disabled = false;
-        previousButton.disabled = false;
-        nextButton.disabled = true;
-        lastButton.disabled = true;
-    } else {
-        firstButton.disabled = false;
-        previousButton.disabled = false;
-        nextButton.disabled = false;
-        lastButton.disabled = false;
+    paginationContainer.querySelectorAll('.pets__page_button').forEach((button) => button.remove());
+    for (let page = 1; page <= pageQuantity; page++) {
+        let button = document.createElement('button');
+        button.className = page === pageNumber
+            ? 'pets__paginator pets__page_button'
+            : 'slider__button pets__page_button';
+        button.dataset.page = page;
+        button.textContent = page;
+        nextButton.before(button);
     }
+    previousButton.disabled = pageNumber <= 1;
+    nextButton.disabled = pageNumber >= pageQuantity;
 }
 
 function changePage(event) {
-    let id = event.target.closest('button').id;
-    switch (id) {
-        case 'first':
-            pageNumber = 1;
-            break;
-        case 'last':
-            pageNumber = pageQuantity;
-            break;
-        case 'next':
-            pageNumber = pageNumber + 1;
-            break;
-        case 'previous':
-            pageNumber = pageNumber - 1;
-            break;
+    let button = event.target.closest('button');
+    if (!button || button.disabled) return;
+    let newPage = pageNumber;
+    if (button.dataset.page) {
+        newPage = Number(button.dataset.page);
+    } else if (button.id === 'next') {
+        newPage = pageNumber + 1;
+    } else if (button.id === 'previous') {
+        newPage = pageNumber - 1;
     }
+    if (newPage === pageNumber) return;
+    pageNumber = newPage;
     changePaginationStatus();
-    generateCards();
+    generateCards().then(scrollToFirstCard);
 }
 
 async function init() {
-    screenCheck();
-    await getObjectPets('./assets/js/pets.json', 48);
-    generateCards();
+    allPets = await getPets('./assets/js/pets.json');
+    setCategory(categoryButtons[0].dataset.category);
 
-    blackoutInfo.addEventListener('click', hideInfo);
-
-    blackoutInfo.addEventListener("mouseleave", ()=>{closeButton.classList.remove("info__close_button_hover")});
-    blackoutInfo.addEventListener("mouseenter", ()=>{closeButton.classList.add("info__close_button_hover")});
+    categoryButtons.forEach((button) => button.addEventListener('click', changeCategory));
+    paginationContainer.addEventListener('click', changePage);
 
     mediaQuery1280.addEventListener('change', screenCheck);
     mediaQuery320.addEventListener('change', screenCheck);
