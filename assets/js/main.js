@@ -2,30 +2,21 @@ import { mediaQuery1280, mediaQuery768, mediaQuery320, getPets, createCards } fr
 import { showInfo } from './modal.js';
 
 const cardsContainer = document.querySelector('.pets__cards');
-
-const pagesButtons = document.querySelectorAll('.slider__button');
+const previousButton = document.getElementById('slider-previous');
+const nextButton = document.getElementById('slider-next');
 
 const renderCards = createCards(cardsContainer, showInfo);
 
-let fullPetsList = [];
-let pastPets = [];
-let currentPets = [];
+let sliderPets = [];
+let startIndex = 0;
 let petsOnPage;
 
-function getRandomPets(){
-    pastPets = currentPets.slice();
-    currentPets = [];
-    let n;
-    for (let i = 0; i < petsOnPage; i++) {
-        do {
-            n = (Math.floor(Math.random() * 16));
-        } while (pastPets.includes(n) || currentPets.includes(n));
-        currentPets.push(n);
-    }
-}
-
 function generateCards(){
-    renderCards(currentPets.map((index) => fullPetsList[index]));
+    const pets = [];
+    for (let i = 0; i < petsOnPage; i++) {
+        pets.push(sliderPets[(startIndex + i) % sliderPets.length]);
+    }
+    renderCards(pets);
 }
 
 function screenCheck(){
@@ -36,20 +27,21 @@ function screenCheck(){
     } else {
         petsOnPage = 1;
     }
-    getRandomPets();
     generateCards();
 }
 
-function changePage() {
-    getRandomPets();
+function changePage(step) {
+    const count = sliderPets.length;
+    startIndex = ((startIndex + step * petsOnPage) % count + count) % count;
     generateCards();
 }
 
 async function init() {
-    fullPetsList = await getPets('assets/js/pets.json');
+    sliderPets = (await getPets('assets/js/pets.json')).slice(0, 9);
     screenCheck();
 
-    pagesButtons.forEach((button) => button.addEventListener('click', changePage));
+    previousButton.addEventListener('click', () => changePage(-1));
+    nextButton.addEventListener('click', () => changePage(1));
 
     mediaQuery1280.addEventListener('change', screenCheck);
     mediaQuery320.addEventListener('change', screenCheck);
